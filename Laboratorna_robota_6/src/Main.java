@@ -1,14 +1,59 @@
 import java.util.Scanner;
 public class Main {
+
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+
+            boolean exit = false;
+            while (!exit) {
+                System.out.println("Введіть номер завдання (1-5) або 0 для виходу:");
+                int taskNumber = scanner.nextInt();
+                scanner.nextLine();
+
+                switch (taskNumber) {
+                    case 0:
+                        exit = true;
+                        break;
+                    case 1:
+                        Zav_1.main(args);
+                        break;
+                    case 2:
+                        Zav_2.main(args);
+                        break;
+                    case 3:
+                        Zav_3.main(args);
+                        break;
+                    case 4:
+                        Zav_4.main(args);
+                        break;
+                    case 5:
+                        Zav_5_6.main(args);
+                        break;
+                    default:
+                        System.out.println("Неправильний номер завдання.");
+                }
+
+                if (!exit) {
+                    System.out.println("Бажаєте виконати ще одне завдання? (Yes/No)");
+                    String continueChoice = scanner.nextLine().toLowerCase();
+                    if (!continueChoice.equals("Yes")) {
+                        exit = true;
+                    }
+                }
+            }
+
+            scanner.close();
+            System.out.println("Програма завершила роботу.");
+        }
+
+
     public static class Zav_1 {
         public static void main(String[] args) {
-            // Виклик методу main з кожного класу в зазначеному порядку
             Person.main(args);
         }
     }
     public static class Zav_2 {
         public static void main(String[] args) {
-            // Виклик методу main з кожного класу в зазначеному порядку
             Result2.main(args);
             Phone.main(args);
             Phone_1.main(args);
@@ -18,7 +63,6 @@ public class Main {
     }
     public static class Zav_3 {
         public static void main(String[] args) {
-            // Виклик методу main з кожного класу в зазначеному порядку
             Ball.main(args);
             Cylinder.main(args);
             SolidOfRevolution.main(args);
@@ -29,7 +73,6 @@ public class Main {
     }
     public static class Zav_4 {
         public static void main(String[] args) {
-            // Виклик методу main з кожного класу в зазначеному порядку
             Car.main(args);
             Sedan.main(args);
             Truck.main(args);
@@ -38,7 +81,6 @@ public class Main {
     }
     public static class Zav_5_6 {
         public static void main(String[] args) {
-            // Виклик методу main з кожного класу в зазначеному порядку
             LibraryCard.main(args);
             ExtendedLibraryCard.main(args);
             Truck.main(args);
@@ -46,6 +88,8 @@ public class Main {
         }
     }
 }
+
+
 //Zav_1
 class Person {
     private String fullName;
@@ -141,7 +185,7 @@ class Phone_2 extends Phone {
     }
 }
 class Phone_3 extends Phone {
-    private int batteryLife; // Унікальне поле для мобільного телефону
+    private int batteryLife;
 
     public  Phone_3 (String number, String model, double weight, int batteryLife) {
         super(number, model, weight);
@@ -163,20 +207,20 @@ class Ball extends SolidOfRevolution {
     // Конструктор
     public Ball(double radius) {
         this.radius = radius;
-        this.volume = (4.0 / 3.0) * Math.PI * radius * radius * radius; // Об'єм кулі
+        this.volume = (4.0 / 3.0) * Math.PI * radius * radius * radius;
     }
 
     public static void main(String[] args) {
     }
 }
 class Cylinder extends SolidOfRevolution {
-    protected double height; // Висота циліндра
+    protected double height;
 
-    // Конструктор
+
     public Cylinder(double radius, double height) {
         this.radius = radius;
         this.height = height;
-        this.volume = Math.PI * radius * radius * height; // Об'єм циліндра
+        this.volume = Math.PI * radius * radius * height;
     }
 
     public static void main(String[] args) {
@@ -193,13 +237,13 @@ class SolidOfRevolution extends Shape {
     }
 }
 class Pyramid extends Shape {
-    protected double s; // Площа основи
-    protected double h; // Висота
-    // Конструктор
+    protected double s;
+    protected double h;
+
     public Pyramid(double s, double h) {
         this.s = s;
         this.h = h;
-        this.volume = (s * h) / 3; // Об'єм піраміди
+        this.volume = (s * h) / 3;
     }
 
     public static void main(String[] args) {
@@ -355,8 +399,8 @@ class Result5_6 {
     public static void main(String[] args) {
 
         LibraryCard card1 = new LibraryCard();
-        card1.inputInfo(); // Вводимо інформацію
-        card1.displayInfo(); // Виводимо інформацію
+        card1.inputInfo(); 
+        card1.displayInfo();
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введіть кількість книг, які ви бажаєте додати чи відняти (наприклад, +3 або -2):");
@@ -365,21 +409,21 @@ class Result5_6 {
         int quantity = Integer.parseInt(input.substring(1));
 
         if (operation == '+') {
-            card1.increaseBorrowedBooks(quantity); // Збільшуємо кількість взятих книг
+            card1.increaseBorrowedBooks(quantity);
         } else if (operation == '-') {
-            card1.decreaseBorrowedBooks(quantity); // Зменшуємо кількість взятих книг
+            card1.decreaseBorrowedBooks(quantity);
         } else {
             System.out.println("Неправильний формат вводу.");
         }
 
-        card1.displayInfo(); // Виводимо оновлену інформацію
+        card1.displayInfo();
 
         System.out.println("------------------------------------");
 
         ExtendedLibraryCard card2 = new ExtendedLibraryCard();
-        card2.inputInfo(); // Вводимо основну інформацію
-        card2.inputAdditionalInfo(); // Вводимо додаткову інформацію
-        card2.displayInfo(); // Виводимо інформацію
+        card2.inputInfo();
+        card2.inputAdditionalInfo();
+        card2.displayInfo();
 
         System.out.println("\"Введіть кількість книг, які ви бажаєте додати чи відняти (наприклад, +3 або -2):\"");
         input = scanner.nextLine();
@@ -387,14 +431,14 @@ class Result5_6 {
         quantity = Integer.parseInt(input.substring(1));
 
         if (operation == '+') {
-            card2.increaseBorrowedBooks(quantity); // Збільшуємо кількість взятих книг
+            card2.increaseBorrowedBooks(quantity);
         } else if (operation == '-') {
-            card2.decreaseBorrowedBooks(quantity); // Зменшуємо кількість взятих книг
+            card2.decreaseBorrowedBooks(quantity);
         } else {
             System.out.println("Неправильний формат вводу.");
         }
 
-        card2.displayInfo(); // Виводимо оновлену інформацію
+        card2.displayInfo();
 
         scanner.close();
     }
